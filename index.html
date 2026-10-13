@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>화성·오산·안성 고등학교 심층 진단</title>
+<style>
+:root{--ink:#14202B;--sub:#566471;--bg:#EEF3F4;--card:#fff;--line:#D5DEE2;--g:#0F4C45;--g2:#DCEBE8;--a:#E39B2D;--r:10px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1,h2,h3{font-family:"Noto Serif KR","Batang","Nanum Myeongjo",serif;margin:0}
+header{padding:18px 0 8px}
+header h1{font-size:1.5rem;color:var(--g)}
+header p{margin:4px 0 0;color:var(--sub);font-size:.9rem}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:14px 0 6px}
+.bar i{display:block;height:100%;width:0;background:var(--g);transition:width .4s}
+.cnt{font-size:.85rem;color:var(--sub);text-align:right}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;animation:fade .45s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.q h2{font-size:1.2rem;margin-bottom:6px}
+.q .hint{color:var(--sub);font-size:.88rem;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;font:inherit;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;margin-top:9px;cursor:pointer;color:var(--ink)}
+.opt:hover,.opt:focus-visible{border-color:var(--g);outline:none;background:var(--g2)}
+.opt.on{border-color:var(--g);background:var(--g);color:#fff}
+.nav{margin-top:16px}
+.ghost{font:inherit;background:none;border:0;color:var(--sub);cursor:pointer;padding:6px 0;text-decoration:underline}
+.btn{font:inherit;background:var(--g);color:#fff;border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
+.sum{background:var(--g);color:#fff;border-radius:var(--r);padding:20px;animation:fade .45s ease both}
+.sum h2{font-size:1.3rem}
+.sum p{margin:6px 0 0;opacity:.9;font-size:.92rem}
+.grp{margin-top:22px;animation:fade .45s ease both}
+.grp h3{font-size:1.1rem;padding-bottom:6px;border-bottom:2px solid var(--g)}
+.grp .mine{display:inline-block;background:var(--a);color:#241600;font-size:.75rem;border-radius:4px;padding:1px 7px;margin-left:6px;font-family:inherit;vertical-align:middle}
+.grp .d{color:var(--sub);font-size:.85rem;margin:6px 0 4px}
+.sch{display:flex;gap:12px;align-items:center;width:100%;text-align:left;font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:8px;cursor:pointer;color:var(--ink)}
+.sch:hover,.sch:focus-visible{border-color:var(--g);outline:none}
+.rk{flex:none;width:30px;height:30px;border-radius:50%;background:var(--g2);color:var(--g);display:grid;place-items:center;font-weight:700}
+.sch b{font-size:1.02rem}
+.sch small{display:block;color:var(--sub)}
+.pill{margin-left:auto;flex:none;text-align:center;font-size:.8rem;color:var(--sub)}
+.pill strong{display:block;font-size:1.2rem;color:var(--g)}
+.tg{display:inline-block;font-size:.72rem;border-radius:4px;padding:0 6px;margin:0 4px 0 0;background:#FFF1D9;color:#7A4B00}
+.tg.b{background:var(--g2);color:var(--g)}
+.tg.r{background:#FBE0DD;color:#8F2418}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:14px;color:var(--sub);margin-top:8px}
+.note{font-size:.8rem;color:var(--sub);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+#ov{position:fixed;inset:0;background:rgba(10,20,25,.55);display:none;align-items:center;justify-content:center;padding:14px;z-index:9}
+#ov.show{display:flex}
+.mdl{background:#fff;border-radius:12px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:22px;animation:fade .25s ease both}
+.mdl h2{font-size:1.35rem;color:var(--g)}
+.mdl .x{float:right;font-size:1.5rem;background:none;border:0;cursor:pointer;color:var(--sub);line-height:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.grid div{background:var(--bg);border-radius:8px;padding:9px 11px;font-size:.88rem}
+.grid span{display:block;color:var(--sub);font-size:.76rem}
+.grid .w{grid-column:1/-1}
+.gauge{height:9px;background:var(--line);border-radius:5px;margin-top:5px;overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--a)}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.pill{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>고등학교 심층 진단</h1>
+<p>화성·오산·안성 중학생·학부모를 위한 다차원 내신 경쟁력 분석</p>
+</header>
+<div id="pg" style="display:block">
+<div class="bar"><i id="bar"></i></div>
+<div class="cnt" id="cnt"></div>
+</div>
+<main id="main"></main>
+</div>
+<div id="ov" role="dialog" aria-modal="true" aria-label="학교 상세 정보"><div class="mdl" id="mdl"></div></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ── 학교 DB (※ 학습용 추정치: 반드시 학교알리미·교육청 공시로 재확인) ──
+ c: 통학 적합도 [오산, 동탄, 향남·서부, 비봉·남양 등, 안성]
+ st 전교생, cut 전년도 합격(배정 평균) 점수(200점), lv 입학생 학업수준, ra 지역 학력지수,
+ ne 최소성취수준 미도달 비율(%), study 면학분위기, deep 심화·몰입, susi 수시(세특·교과다양성) 유리도 */
+var S=[
+{id:"sema",n:"세마고",loc:"오산",tag:"과학중점학교",st:720,cut:176,lv:74,ra:58,ne:4.5,mf:"51 : 49",tr:"인문 40% : 자연 60%",c:[100,55,0,0,0],dorm:0,sel:0,study:78,deep:90,susi:76,sci:1,
+ pg:"기존 자율형 공립고에서 과학중점학교로 전환. 과학·수학 심화 교육과정, 물리·화학·생명·지구 실험 및 탐구 중심 과학중점 특화 프로그램, 과학 R&E·융합 탐구 동아리 운영."},
+{id:"segyo",n:"세교고",loc:"오산 세교",tag:"",st:810,cut:168,lv:62,ra:58,ne:7.8,mf:"50 : 50",tr:"인문 50% : 자연 50%",c:[100,40,0,0,0],dorm:0,sel:0,study:64,deep:62,susi:68,sci:0,
+ pg:"세교 신도시 통학권 중심 일반고. 선택과목 다양화, 교과 연계 진로 프로그램과 학생 주도 동아리 활동."},
+{id:"maehol",n:"매홀고",loc:"오산",tag:"",st:690,cut:171,lv:66,ra:56,ne:6.0,mf:"49 : 51",tr:"인문 48% : 자연 52%",c:[90,40,0,0,0],dorm:0,sel:0,study:68,deep:66,susi:70,sci:0,
+ pg:"신설 학교 특성상 기자재·시설이 우수하며 소규모 선택 강좌와 학생 맞춤형 수업을 지향."},
+{id:"osan",n:"오산고",loc:"오산",tag:"",st:640,cut:166,lv:60,ra:55,ne:8.5,mf:"54 : 46",tr:"인문 52% : 자연 48%",c:[95,35,0,0,0],dorm:0,sel:0,study:60,deep:58,susi:66,sci:0,
+ pg:"전통 있는 오산 시내 일반고. 기초학력 책임지도와 방과후 학습 지원, 진로 맞춤형 동아리."},
+{id:"dongtan",n:"동탄고",loc:"화성 동탄",tag:"",st:860,cut:178,lv:78,ra:80,ne:3.8,mf:"50 : 50",tr:"인문 44% : 자연 56%",c:[60,100,0,0,0],dorm:0,sel:0,study:80,deep:80,susi:66,sci:0,
+ pg:"동탄 학력 우수 학생이 집중되는 대규모 일반고. 심화 선택과목 개설 폭이 넓으나 내신 경쟁이 치열."},
+{id:"yedang",n:"예당고",loc:"화성 동탄",tag:"",st:780,cut:174,lv:75,ra:80,ne:4.2,mf:"51 : 49",tr:"인문 46% : 자연 54%",c:[50,95,0,0,0],dorm:0,sel:0,study:76,deep:74,susi:68,sci:0,
+ pg:"동탄 2신도시 일반고. 교과 심화 수업과 학생 자치·진로 프로그램을 균형 있게 운영."},
+{id:"banso",n:"반송고",loc:"화성 동탄",tag:"",st:830,cut:172,lv:72,ra:78,ne:4.6,mf:"50 : 50",tr:"인문 45% : 자연 55%",c:[65,95,0,0,0],dorm:0,sel:0,study:73,deep:72,susi:68,sci:0,
+ pg:"동탄 권역 통학 접근성이 좋은 일반고. 수준별 방과후 수업과 교과 연계 탐구 활동."},
+{id:"intl",n:"동탄국제고",loc:"화성 동탄",tag:"국제계열·선발·기숙사 운영",st:360,cut:192,lv:92,ra:80,ne:0.8,mf:"45 : 55",tr:"국제계열 단일(인문·사회 중심)",c:[45,85,0,0,0],dorm:1,sel:1,study:90,deep:88,susi:80,sci:0,
+ pg:"국제계열 특수목적고. 외국어·국제 이해·사회과학 심화 교육과정, 영어 몰입 및 글로벌 프로그램. 학교 자체 선발로 입학 경쟁이 매우 높음."},
+{id:"gaon",n:"가온고",loc:"안성",tag:"기숙형·선발",st:330,cut:186,lv:85,ra:60,ne:1.5,mf:"52 : 48",tr:"인문 40% : 자연 60%",c:[0,0,0,0,100],dorm:1,sel:1,study:92,deep:86,susi:74,sci:1,
+ pg:"기숙형 공립고. 야간 자기주도학습 관리와 사감 체제, 심화 탐구·진로 프로그램. 원거리 학생은 기숙사 생활이 전제."},
+{id:"hwaseong",n:"화성고",loc:"화성",tag:"기숙형 공립고",st:420,cut:170,lv:66,ra:62,ne:6.5,mf:"55 : 45",tr:"인문 47% : 자연 53%",c:[0,0,0,60,0],dorm:1,sel:0,study:82,deep:70,susi:70,sci:0,
+ pg:"기숙형 공립고로 면학 분위기 조성에 강점. 기숙사 연계 야간 자습·학습 코칭, 방과후 심화 수업."},
+{id:"hyangnam",n:"향남고",loc:"화성 향남",tag:"",st:880,cut:167,lv:63,ra:62,ne:7.2,mf:"50 : 50",tr:"인문 50% : 자연 50%",c:[0,0,100,60,0],dorm:0,sel:0,study:64,deep:62,susi:68,sci:0,
+ pg:"향남 신도시 대규모 일반고. 선택과목 다양, 진로 연계 동아리와 방과후 학교 운영."},
+{id:"samgoe",n:"삼괴고",loc:"화성 서부",tag:"",st:520,cut:160,lv:54,ra:55,ne:10.5,mf:"51 : 49",tr:"인문 55% : 자연 45%",c:[0,0,85,60,0],dorm:0,sel:0,study:58,deep:52,susi:72,sci:0,
+ pg:"중규모 지역 일반고. 소인원 밀착 지도와 기초학력 보강, 수시 세특 활동 기회가 비교적 많음."},
+{id:"bibong",n:"비봉고",loc:"화성 비봉",tag:"",st:480,cut:158,lv:52,ra:55,ne:11.0,mf:"52 : 48",tr:"인문 55% : 자연 45%",c:[0,0,50,100,0],dorm:0,sel:0,study:55,deep:50,susi:72,sci:0,
+ pg:"비봉·남양권 통학 중심 일반고. 학습 격차 완화 프로그램과 학생 주도 활동 지원."}
+];
+
+/* ── 문항 ── */
+var Q=[
+{t:"어느 지역에 거주하시나요?",h:"통학 가능 학교를 걸러내는 가장 중요한 기준입니다.",o:[["오산시",0],["화성시 동탄",1],["화성시 향남·서부권",2],["화성시 비봉·남양 등 기타",3],["안성시",4]]},
+{t:"등하교 방식은 어떻게 생각하세요?",h:"선택에 따라 추천 학교가 엄격하게 달라집니다.",o:[["순수 통학만 가능",0],["기숙사를 선호",1],["둘 다 가능",2]]},
+{t:"감당할 수 있는 편도 통학 시간은?",h:"",o:[["30분 이내",0],["45분 이내",1],["60분 이내",2]]},
+{t:"학습 스타일은 어느 쪽에 가깝나요?",h:"",o:[["스스로 계획하고 공부한다",0],["경쟁 속에서 자극을 받는다",1],["관리와 환경이 있어야 집중한다",2]]},
+{t:"희망 진로 계열은?",h:"",o:[["이공·의약 계열",0],["인문·사회·교육 계열",1],["아직 미정",2]]},
+{t:"주된 대입 전략은?",h:"",o:[["학생부종합(학종) 중심",0],["수능(정시) 중심",1],["수시·정시 균형",2]]},
+{t:"중학교 가내신 성적(200점 만점 환산)은?",h:"예상 점수와 가장 가까운 구간을 골라 주세요.",o:[["195점 이상",197],["185~194점",190],["175~184점",180],["165~174점",170],["155~164점",160],["154점 이하",148]]},
+{t:"내신 경쟁에 대한 생각은?",h:"",o:[["치열해도 수준 높은 친구들과 심화하고 싶다",0],["적당한 경쟁이면 좋다",1],["무엇보다 내신 등급을 안정적으로 확보하고 싶다",2]]},
+{t:"학교 선택에서 가장 중요한 가치는?",h:"선택하신 항목이 리포트 맨 위에 표시됩니다.",o:[["통학 거리·주거 적합도",0],["내신 확보·수시 경쟁력",1],["면학 분위기·심화 몰입",2]]}
+];
+var REG=["오산","동탄","향남·서부","비봉·남양 등","안성"];
+var GN=[
+ {k:"commute",t:"통학 거리·주거 적합도 최우선",d:"집에서 가깝고 생활 리듬이 안정적인 학교 중심"},
+ {k:"grade",t:"내신 확보·수시 경쟁력 최우선",d:"실질 내신 경쟁 강도와 내 성적 대비 확보 난이도를 함께 본 순위"},
+ {k:"study",t:"면학 분위기·심화 몰입 최우선",d:"입학생 수준, 심화 교육과정, 학습 환경 중심"}
+];
+
+var idx=0,ans=[];
+var $=function(id){return document.getElementById(id)};
+var main=$("main"),bar=$("bar"),cnt=$("cnt"),pg=$("pg"),ov=$("ov"),mdl=$("mdl");
+var lastFocus=null;
+
+function clamp(v){return Math.max(0,Math.min(100,v))}
+function esc(s){return String(s).replace(/[&<>"']/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]})}
+
+/* 실질 내신 경쟁 강도: 입학생 수준 + 지역 학력 + 최소성취 미도달 비율(낮을수록 경쟁 치열) */
+function intensity(s){return Math.round(clamp(s.lv*.55+s.ra*.2+(100-s.ne*4)*.25))}
+function intLabel(v){return v>=80?"매우 치열":v>=68?"치열":v>=56?"보통":"비교적 여유"}
+
+function render(){
+  var q=Q[idx];
+  pg.style.display="block";
+  bar.style.width=(idx/Q.length*100)+"%";
+  cnt.textContent=(idx+1)+" / "+Q.length;
+  var h='<section class="q"><h2>Q'+(idx+1)+'. '+esc(q.t)+'</h2>'+(q.h?'<p class="hint">'+esc(q.h)+'</p>':'<p class="hint"></p>');
+  q.o.forEach(function(o,i){
+    h+='<button type="button" class="opt'+(ans[idx]===o[1]?" on":"")+'" data-i="'+i+'">'+esc(o[0])+'</button>';
+  });
+  h+='<div class="nav">'+(idx>0?'<button type="button" class="ghost" id="back">이전 문항</button>':'')+'</div></section>';
+  main.innerHTML=h;
+}
+
+function pick(i){
+  ans[idx]=Q[idx].o[i][1];
+  var b=main.querySelectorAll(".opt");
+  for(var k=0;k<b.length;k++)b[k].classList.toggle("on",k===i);
+  setTimeout(function(){
+    if(idx<Q.length-1){idx++;render()}else{report()}
+  },220);
+}
+
+/* ── 평가 ── */
+function evalSchool(s,A){
+  var reg=A[0],mode=A[1],thr=[75,55,45][A[2]],ux=A[6],c=s.c[reg];
+  if(mode===0){ if(c<thr)return null; }
+  else if(mode===1){ if(!s.dorm)return null; c=85; }
+  else { if(c<thr){ if(s.dorm)c=60; else return null; } }
+  var it=intensity(s),margin=ux-s.cut;
+  if(s.sel&&margin<-15)return null;
+  var secure=clamp((100-it)*.6+clamp(50+margin*3)*.4);
+  var kf=[.8,1,1.25][A[7]];
+  var bonusSci=(A[4]===0&&s.sci)?5:0;
+  var studyB=s.study+(A[3]===2&&s.dorm?5:0)+(A[3]===1?(s.lv-60)*.1:0);
+  var susiB=s.susi+(A[5]===0?4:0);
+  return {s:s,c:c,it:it,margin:margin,secure:Math.round(secure),
+    g:{
+      commute:.6*c+.2*secure+.2*studyB,
+      grade:.55*secure*kf/1.0+.25*susiB+.2*c+bonusSci+(A[5]===1?-2:0),
+      study:.5*studyB+.3*s.deep+.2*c+bonusSci
+    }};
+}
+function fit(m,sel){
+  if(m>=8)return ["여유 있음","b"];
+  if(m>=0)return ["적정","b"];
+  if(m>=-8)return [sel?"도전":"소신",""];
+  return ["상향 도전","r"];
+}
+
+function report(){
+  bar.style.width="100%";pg.style.display="none";
+  var A=ans,list=[];
+  S.forEach(function(s){var r=evalSchool(s,A);if(r)list.push(r)});
+  var order=[A[8],0,1,2].filter(function(v,i,a){return a.indexOf(v)===i});
+  var mode=["순수 통학","기숙사 선호","통학·기숙 모두"][A[1]];
+  var h='<div class="sum"><h2>진단 결과</h2><p>거주 '+esc(REG[A[0]])+' · '+mode+' · 가내신 '+(A[6]>=197?"195점 이상":A[6]<=148?"154점 이하":esc(Q[6].o.filter(function(o){return o[1]===A[6]})[0][0]))+'</p><p>조건에 맞는 학교 '+list.length+'곳을 세 가지 우선순위로 정리했습니다. 학교를 누르면 상세 정보가 열립니다.</p></div>';
+  order.forEach(function(gi){
+    var g=GN[gi];
+    var sorted=list.slice().sort(function(a,b){return b.g[g.k]-a.g[g.k]}).slice(0,4);
+    h+='<section class="grp"><h3>'+esc(g.t)+(gi===A[8]?'<span class="mine">내 1순위</span>':'')+'</h3><p class="d">'+esc(g.d)+'</p>';
+    if(!sorted.length)h+='<div class="empty">선택하신 조건(거주지·등하교 방식·통학 시간)에 맞는 학교가 없습니다. 통학 시간을 늘리거나 등하교 방식을 바꿔 다시 진단해 보세요.</div>';
+    sorted.forEach(function(r,i){
+      var f=fit(r.margin,r.s.sel);
+      h+='<button type="button" class="sch" data-id="'+r.s.id+'"><span class="rk">'+(i+1)+'</span><span><b>'+esc(r.s.n)+'</b><small>'+esc(r.s.loc)+' · 통학 적합 '+Math.round(r.c)+' · 내신 확보 '+r.secure+' · 경쟁 강도 '+r.it+'</small>'+
+        (r.s.tag?'<span class="tg">'+esc(r.s.tag)+'</span>':'')+'<span class="tg '+f[1]+'">내 성적 기준 '+f[0]+'</span></span>'+
+        '<span class="pill"><strong>'+Math.round(r.g[g.k])+'</strong>종합</span></button>';
+    });
+    h+='</section>';
+  });
+  h+='<p class="note">※ 학교별 수치(전교생 수, 합격 점수, 입학생 수준, 최소성취수준 미도달 비율, 성비 등)는 이 앱의 분석용 추정치입니다. 평준화 지역 일반고는 추첨 배정이라 합격 점수가 실제 입학선과 다를 수 있으므로, 지원 전 학교알리미와 경기도교육청 최신 공시, 학교 설명회로 반드시 확인하세요.</p><div class="nav"><button type="button" class="btn" id="redo">처음부터 다시 진단</button></div>';
+  main.innerHTML=h;
+  window.scrollTo(0,0);
+}
+
+function openModal(id){
+  var s=null;for(var i=0;i<S.length;i++)if(S[i].id===id)s=S[i];
+  if(!s)return;
+  var it=intensity(s),ux=ans[6],m=ux-s.cut,f=fit(m,s.sel);
+  lastFocus=document.activeElement;
+  mdl.innerHTML='<button type="button" class="x" id="mx" aria-label="닫기">×</button><h2>'+esc(s.n)+'</h2>'+
+  '<div>'+(s.tag?'<span class="tg">'+esc(s.tag)+'</span>':'')+'<span class="tg b">'+esc(s.loc)+'</span><span class="tg '+f[1]+'">내 성적 기준 '+f[0]+' ('+(m>=0?"+":"")+m+'점)</span></div>'+
+  '<div class="grid">'+
+  '<div><span>전교생 수</span>약 '+s.st+'명</div>'+
+  '<div><span>전년도 합격 점수(200점 만점)</span>'+s.cut+'점</div>'+
+  '<div><span>입학생 학업 수준</span>'+s.lv+' / 100</div>'+
+  '<div><span>최소성취수준 미도달 학생 비율</span>약 '+s.ne+'%</div>'+
+  '<div><span>남녀 학생 비율 (남 : 여)</span>'+esc(s.mf)+'</div>'+
+  '<div><span>문·이과 반 구성 비율</span>'+esc(s.tr)+'</div>'+
+  '<div class="w"><span>실질 내신 경쟁 강도 · '+intLabel(it)+' ('+it+' / 100)</span><div class="gauge"><i style="width:'+it+'%"></i></div></div>'+
+  '<div class="w"><span>핵심 특색 프로그램 및 교육과정</span>'+esc(s.pg)+'</div></div>'+
+  '<p class="note" style="margin-top:8px">경쟁 강도는 입학생 학업 수준, 지역 학력 격차, 최소성취수준 미도달 비율을 함께 반영한 값입니다. 수치는 추정치이므로 공식 공시로 재확인하세요.</p>';
+  ov.classList.add("show");
+  $("mx").focus();
+}
+function closeModal(){
+  ov.classList.remove("show");
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();
+}
+
+/* ── 이벤트 ── */
+main.addEventListener("click",function(e){
+  var t=e.target;
+  var o=t.closest?t.closest(".opt"):null;
+  if(o){pick(parseInt(o.getAttribute("data-i"),10));return}
+  var sc=t.closest?t.closest(".sch"):null;
+  if(sc){openModal(sc.getAttribute("data-id"));return}
+  if(t.id==="back"&&idx>0){idx--;render();return}
+  if(t.id==="redo"){idx=0;ans=[];render()}
+});
+ov.addEventListener("click",function(e){if(e.target===ov||e.target.id==="mx")closeModal()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("show"))closeModal()});
+
+render();
+})();
+</script>
+</body>
+</html>
